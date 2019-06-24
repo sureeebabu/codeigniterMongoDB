@@ -15,4 +15,16 @@ class UserCtrl extends CI_Controller {
 	{
 		 $this->load->view('addEditUser');
 	}
+
+	public function edit($newsID){
+		$this->load->view('addEditUser',$newsID);
+	}
+
+	public function deleteFn($newsID){
+		//5d10bf8701e83f170a100fce
+		// $this->admin->delete("collection",array("_id"=>$newsID),$limit=0);
+		redirect("Welcome/index");
+	}
+	
+
 }
