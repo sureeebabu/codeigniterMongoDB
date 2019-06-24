@@ -38,42 +38,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</h5>
 
 
-<a class="btn btn-white btn-info btn-bold pull-right" href="<?php echo base_url('UserCtrl/index'); ?>"><i class="ace-icon fa fa-plus bigger-120 blue"></i> Add New News</a>
+<a class="btn btn-white btn-info btn-bold pull-right" href="<?php echo base_url('Welcome/index'); ?>"><i class="ace-icon fa fa-plus bigger-120 blue"></i> Add New News</a>
 			
 		</div>
 
 		<div class="widget-body">
 			<div class="widget-main no-padding">
-				<table  id="dynamic-table" class="table table-striped table-bordered table-hover">
-					<thead class="thin-border-bottom">
-						<tr>
-				<th class="text-center">#</th>
-                    <th class="text-center">News Title</th>
-						</tr>
-					</thead>
-
-					<tbody>
-						<?php
-
-//echo base_url();
-
-			if(count($data)>0)
-			{
-				$i=1;
-				foreach($data as $row)
-				{
-					echo "<tr>";
-					echo "<td  class='text-center'>".$i++."</td>";
-					echo "<td>".$row["newsTitle"]."</td>";				 
-					echo "</tr>"; 
-				}
-			}else
-			{
-				echo "<tr><td class='text-center text-danger' colspan='2'><b>No Record Found</b></td></tr>";
-			}
-			?>	
-					</tbody>
-				</table>
+				 Add user
 			</div>
 		</div>
 	</div>

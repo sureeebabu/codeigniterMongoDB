@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</h5>
 
 
-<a class="btn btn-white btn-info btn-bold pull-right" href="<?php echo base_url('UserCtrl/index'); ?>"><i class="ace-icon fa fa-plus bigger-120 blue"></i> Add New News</a>
+<a class="btn btn-white btn-info btn-bold pull-right" href="#"><i class="ace-icon fa fa-plus bigger-120 blue"></i> Add New News</a>
 			
 		</div>
 
@@ -54,9 +54,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 					<tbody>
 						<?php
-
-//echo base_url();
-
 			if(count($data)>0)
 			{
 				$i=1;
