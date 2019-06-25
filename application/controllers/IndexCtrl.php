@@ -26,18 +26,8 @@ class IndexCtrl extends CI_Controller {
 	public function edit($newsID){
 		$data['mode'] = "Edit";		
 		$data['newsID'] = $newsID;
-		//print_r($newsID);
-
-		//print_r($this->mongo_db->select(['_id', 'newsTitle', 'newsCategory'])->get('newsMaster'));
-		//$data['newsData'] = $this->mongo_db->where('newsTitle', 'a')->get('newsMaster');
-		//print_r($this->mongo_db->where('newsTitle', 'a')->get('newsMaster')[0]);
-
-		//print_r($this->mongo_db->where('newsTitle', 'a')->get('newsMaster')[0]);  // Working Code
-  		$filter = ['_id' => new MongoDB\BSON\ObjectID( $newsID )];
-
-		$data['newsData'] = $this->mongo_db->where($filter)->get('newsMaster')[0];
-		 
-
+  		$id = ['_id' => new MongoDB\BSON\ObjectID( $newsID )];
+		$data['newsData'] = $this->mongo_db->where($id)->get('newsMaster')[0];
 		$this->load->view('addEditNews',$data);
 	}
 
@@ -56,32 +46,18 @@ class IndexCtrl extends CI_Controller {
 	}
 
 	public function updateNewsData($newsID){
-	 
-		$updateData = array(
-			'newsTitle' => $this->input->post('txtNewsTitle'),
-			'newsCategory' => $this->input->post('txtNewsCategory'),
-        );
-		$id = array('_id' => $newsID);
-		$add_attributes =  array_merge($id, $updateData);
-
-	 	print_r($add_attributes);
-		// $this->mongo_db->update
-		// (
-		// 	'newsMaster',
-		// 	array('_id' =>  $newsID),
-		// 	array('$set' => array( 
-		// 		'newsTitle' => $this->input->post('txtNewsTitle'),
-		// 		'newsCategory' => $this->input->post('txtNewsCategory'),
-		// 		))
-		// );
-
 		
-		
-		$this->mongo_db->update('newsMaster',$add_attributes);
-        // $this->mongo_db->update('newsMaster',$id, array('$set' => $updateData));
-		
+		$id = ['_id' => new MongoDB\BSON\ObjectID( $newsID )];
+		$this->mongo_db->where($id)->set(
+				[
+				 'newsTitle' => $this->input->post('txtNewsTitle'),
+				  'newsCategory' => $this->input->post('txtNewsCategory')
+				]
+				
+				)->update('newsMaster');
 
-		//redirect("IndexCtrl");
+		redirect("IndexCtrl");
+		 
 	}
 
 }
