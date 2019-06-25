@@ -3,7 +3,7 @@
 		<div class="footer-content">
 			<span class="bigger-120 pull-right">
 				<span class="blue bolder">
-				<i class="fa fa-university" ></i> Institute Of Distance Education
+				<i class="fa fa-newspaper-o" ></i> MongoDB with Codeigniter
 				</span>
 				&copy; <?php echo date("20y")?> - <?php echo date("20y")+1?>
 			</span>

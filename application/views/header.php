@@ -4,7 +4,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Madras University</title>
+		<title>MongoDB With codeigniter</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 		<!-- bootstrap & fontawesome -->
@@ -106,10 +106,10 @@
 	<div class="main-container ace-save-state" id="main-container">
 			<div id="sidebar" class="sidebar responsive ace-save-state">
 				<ul class="nav nav-list">
-					<li <?php if($this->uri->segment(1)=="UserCtrl"){echo 'class="active"';}?>>
-						<a href="<?php echo base_url('UserCtrl/'); ?>"  >
+					<li <?php if($this->uri->segment(1)=="IndexCtrl"){echo 'class="active"';}?>>
+						<a href="<?php echo base_url('IndexCtrl/'); ?>"  >
 							<i class="menu-icon fa fa-newspaper-o"></i>
-							<span class="menu-text">User Master</span> 
+							<span class="menu-text">News Master</span> 
 						</a> 
 					</li> 
 				</ul> 
