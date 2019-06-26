@@ -7,28 +7,24 @@ class IndexCtrl extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper('url'); 
+		$this->load->model('NewsModel');
 		$this->load->library('mongo_db');
 	}
 
 	public function index() {
-		//$result['data'] = $this->mongo_db->get('newsMaster'); // Return All Data
-		$result['data'] = $this->mongo_db->sort('_id', 'desc')->get('newsMaster');
+		$result['data'] = $this->NewsModel->getData();
 		$this->load->view('indexView',$result);         
 	}
 
-	public function deleteFn($newsID){
-		$delete= array(
-					'_id' => $newsID
-				);
-		$this->mongo_db->delete('newsMaster',$delete);
+	public function deleteFn($newsID) {
+	    $this->NewsModel->deleteFn($newsID);
 		redirect("IndexCtrl");
 	}
 
 	public function edit($newsID){
 		$data['mode'] = "Edit";		
 		$data['newsID'] = $newsID;
-  		$id = ['_id' => new MongoDB\BSON\ObjectID( $newsID )];
-		$data['newsData'] = $this->mongo_db->where($id)->get('newsMaster')[0];
+		$data['newsData'] = $this->NewsModel->getDataByID($newsID);
 		$this->load->view('addEditNews',$data);
 	}
 
