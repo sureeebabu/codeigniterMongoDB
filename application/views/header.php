@@ -111,7 +111,15 @@
 							<span class="menu-text">News Master</span> 
 						</a> 
 					</li> 
-				</ul> 
+				</ul>
+				<ul class="nav nav-list">
+					<li <?php if($this->uri->segment(1)=="CountryStateCtrl"){echo 'class="active"';}?>>
+						<a href="<?php echo base_url('CountryStateCtrl/'); ?>"  >
+							<i class="menu-icon fa fa-newspaper-o"></i>
+							<span class="menu-text">Country State</span> 
+						</a> 
+					</li> 
+				</ul>  
 
 	 
 		<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
