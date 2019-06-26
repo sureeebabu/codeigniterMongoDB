@@ -4,7 +4,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>MongoDB With codeigniter</title>
+		<title>MongoDB With Codeigniter</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 		<!-- bootstrap & fontawesome -->
@@ -52,9 +52,8 @@
 			<div class="navbar-header pull-left">
 				<a href="#" class="navbar-brand">
 					<small>
-						<i class="fa fa-newspaper-o"></i>
-						 Login
-						
+						<i class="fa fa-file-code-o"></i>
+						MongoDB With codeigniter						
 					</small>
 				</a>
 			</div>
@@ -63,7 +62,7 @@
 				<ul class="nav ace-nav">
 					<li class="light-blue dropdown-modal">
 						<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-							<img class="nav-user-photo" src="http://localhost/codeigniterMongoDB/images/userImg/noImg.png" alt="Users Image" />
+							<img class="nav-user-photo" src="<?php echo base_url(); ?>images/userImg/noImg.png" alt="Users Image" />
 							<span class="user-info">
 								<small>Welcome,</small>
 								

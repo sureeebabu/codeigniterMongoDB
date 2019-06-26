@@ -11,7 +11,8 @@ class IndexCtrl extends CI_Controller {
 	}
 
 	public function index() {
-		$result['data'] = $this->mongo_db->get('newsMaster');
+		//$result['data'] = $this->mongo_db->get('newsMaster'); // Return All Data
+		$result['data'] = $this->mongo_db->sort('_id', 'desc')->get('newsMaster');
 		$this->load->view('indexView',$result);         
 	}
 
