@@ -89,3 +89,6 @@ db.newsMaster.updateMany(
       }
    );
 ----------------------------------
+To search in database : 
+1.db.newsTitle.find({"name": /.*searchText.*/})
+2.db.newsMaster.find( { newsTitle: { $regex: 'Whats.*'} } ).pretty();

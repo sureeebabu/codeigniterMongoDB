@@ -4,7 +4,19 @@ include('header.php'); ?>
 <div class="main-content">
     <div class="main-content-inner">
         <div class="page-content">
-
+<div class="page-header">
+    <div class="row">
+        <form id="listNewsForm" action=" <?php echo site_url('IndexCtrl/search'); ?>" method="post">
+        <div class="col-xs-3">
+            <input type="text" required class="form-control" name="txtSearch" id="txtSearch" placeholder="Search By News Title" />
+            </div>
+            <div class="col-xs-3">
+                <input type="submit" value="Search" class="btn btn-primary btn-xs" />
+            </div>
+        </div>
+        </form>
+       
+    </div>
             <div class="row">
                 <div class="col-xs-12">
                     <div class="row">

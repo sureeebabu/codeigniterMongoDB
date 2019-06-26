@@ -16,6 +16,27 @@ class IndexCtrl extends CI_Controller {
 		$this->load->view('indexView',$result);         
 	}
 
+	public function search() {
+		$searchTxt = $this->input->post('txtSearch');
+		
+		if(empty($searchTxt)){
+			$this->index();
+		}else{
+			$result['data'] = $this->NewsModel->searchByTitle($searchTxt);
+			$this->load->view('indexView',$result);
+		}
+
+		
+		// if (empty($this->NewsModel->searchByTitle($searchTxt))){
+		// 	$this->index();
+		// } else {
+		// 	$result['data'] = $this->NewsModel->searchByTitle($searchTxt);
+		// 	$this->load->view('indexView',$result);
+		// }
+
+		
+	}
+
 	public function deleteFn($newsID) {
 	    $this->NewsModel->deleteFn($newsID);
 		redirect("IndexCtrl");
