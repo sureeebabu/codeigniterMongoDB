@@ -8,6 +8,7 @@ class NewsModel extends CI_Model
 		//$query = $this->mongo_db->get('newsMaster');  // Display All Records
 		//$query = $this->mongo_db->getWhere('newsMaster', ['newsCategory' => 'BUSINESS']);  // Where Condition
 		$query = $this->mongo_db->sort('_id', 'desc')->get('newsMaster');  //Order By
+		//print_r($this->mongo_db->row_array($query));  // return First Record
 		return $query;
 	}
 

@@ -119,6 +119,14 @@
 							<span class="menu-text">Country State</span> 
 						</a> 
 					</li> 
+				</ul>
+				<ul class="nav nav-list">
+					<li <?php if($this->uri->segment(1)=="CustCtrl"){echo 'class="active"';}?>>
+						<a href="<?php echo base_url('CustCtrl/'); ?>"  >
+							<i class="menu-icon fa fa-users"></i>
+							<span class="menu-text">Customer Master</span> 
+						</a> 
+					</li> 
 				</ul>  
 
 	 

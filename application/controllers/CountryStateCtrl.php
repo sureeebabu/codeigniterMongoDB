@@ -13,8 +13,14 @@ class CountryStateCtrl extends CI_Controller {
 
 	public function index() {
 		$result['data'] = $this->CountryStateModel->getData();
+		//var_dump($result['data']);
 		$this->load->view('CountryStateView',$result);         
 	}
 
+	public function stateListByID($countryID){
+		$result['temp_array'] = $this->CountryStateModel->getStateDataByCountryID($countryID);
+		//var_dump($result['data']);
+		$this->load->view('StateView',$result);
+	}
 	 
 }

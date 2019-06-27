@@ -94,6 +94,9 @@ To search in database :
 2.db.newsMaster.find( { newsTitle: { $regex: 'Whats.*'} } ).pretty();
 ------------------------------------------
 Schema for countryState Module
+
+codeigniter php ==> $this->mongo_db->pushAll('stateList', ['Dmitriy', 'Alex', 'John'], ['sort' => 'DESC'])->where('_id', $id )->update('countryState');
+
 db.countryState.insertMany( [
 	{ 
 		countryName: "INDIA",
@@ -104,3 +107,16 @@ db.countryState.insertMany( [
 		stateList:["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina",   "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia"]
 	}
 ]);
+-------------------------------
+Schema for CustomerMaster Module
+db.customerMaster.insertMany([{
+	"customerName": "daijworld",
+	"customerAddress": "velacherry",
+	"customerMobileNo": 7092804642,
+	"orderDetails": [{
+		"orderID": 1,
+		"orderNo": "DW/19-20/001",
+		"orderPrice": 5000
+	}]
+}]);
+-------------------------------

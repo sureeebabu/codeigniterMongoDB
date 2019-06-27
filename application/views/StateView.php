@@ -28,14 +28,8 @@ include('header.php'); ?>
                                     <div class="widget-header">
                                         <h5 class="widget-title bigger lighter">
                                             <i class="ace-icon fa fa-newspaper-o"></i>
-                                            List of Country
-                                        </h5>
-
-
-                                        <!-- <a class="btn btn-white btn-info btn-bold pull-right"
-                                            href="<?php echo base_url('IndexCtrl/addEditUsers'); ?>"><i
-                                                class="ace-icon fa fa-plus bigger-120 blue"></i> Add New News</a> -->
-
+                                            List of State
+                                        </h5> 
                                     </div>
 
                                     <div class="widget-body">
@@ -45,8 +39,7 @@ include('header.php'); ?>
                                                 <thead class="thin-border-bottom">
                                                     <tr>
                                                         <th class="text-center">#</th>
-														<th class="text-center">Country Name</th>
-                                                        <!-- <th class="text-center">State</th> -->
+                                                        <th class="text-center">State</th>
                                                     </tr>
                                                 </thead>
 
@@ -55,28 +48,35 @@ include('header.php'); ?>
 
 //echo base_url();
 
-if(count($data)>0)
-{
-$i=1;
-foreach($data as $row)
-{
-echo "<tr>";
-echo "<td  class='text-center'>".$i++."</td>";
-// echo "<td>".$row["countryName"]."</td>";
-echo "<td class='text-center'>				 
-
-<a title='Country Name' href='".site_url('CountryStateCtrl/stateListByID/'.$row["_id"])."' class='tooltip-default' data-rel='tooltip' data-placement='top'>
-".$row["countryName"]."
-</a> 
-</td>";
-
-// echo "<td>".$row["stateList"][0]."</td>";
-echo "</tr>"; 
+foreach ($temp_array as $array_name => $array) {
+    
+    $i=1;
+    foreach ($array as $key => $value) {
+        echo $key .': ' . $value;
+        // echo "<tr>";
+        // echo "<td  class='text-center'>".$i++."</td>";
+        // echo "<td>".$key["stateList"]."</td>";
+        // echo "</tr>"; 
+    }
 }
-}else
-{
-echo "<tr><td class='text-center text-danger' colspan='4'><b>No Record Found</b></td></tr>";
-}
+
+// if(count($data)>0)
+// {
+// $i=1;
+// foreach($data as $row => $array)
+// {
+//      foreach ($array as $key => $value) {
+//          echo "<tr>";
+// echo "<td  class='text-center'>".$i++."</td>";
+// echo "<td>".$row["countryName"]["stateList"]."</td>";
+// echo "</tr>"; 
+//     }
+
+// }
+// }else
+// {
+// echo "<tr><td class='text-center text-danger' colspan='4'><b>No Record Found</b></td></tr>";
+// }
 ?>
                                                 </tbody>
                                             </table>

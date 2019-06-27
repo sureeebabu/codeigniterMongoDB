@@ -5,17 +5,8 @@ include('header.php'); ?>
     <div class="main-content-inner">
         <div class="page-content">
 <div class="page-header">
-    <div class="row">
-        <!-- <form id="listNewsForm" action=" <?php echo site_url('IndexCtrl/search'); ?>" method="post">
-        <div class="col-xs-3">
-            <input type="text" required class="form-control" name="txtSearch" id="txtSearch" placeholder="Search By News Title" />
-            </div>
-            <div class="col-xs-3">
-                <input type="submit" value="Search" class="btn btn-primary btn-xs" />
-            </div>
-        </div>
-        </form> -->
-       
+    <div class="row"> 
+
     </div>
             <div class="row">
                 <div class="col-xs-12">
@@ -32,9 +23,9 @@ include('header.php'); ?>
                                         </h5>
 
 
-                                        <!-- <a class="btn btn-white btn-info btn-bold pull-right"
-                                            href="<?php echo base_url('IndexCtrl/addEditUsers'); ?>"><i
-                                                class="ace-icon fa fa-plus bigger-120 blue"></i> Add New News</a> -->
+                                        <a class="btn btn-white btn-info btn-bold pull-right"
+                                            href="<?php echo base_url('CustCtrl/addOrderDetails'); ?>"><i
+                                                class="ace-icon fa fa-plus bigger-120 blue"></i> Add New Order Details</a>
 
                                     </div>
 
@@ -45,8 +36,8 @@ include('header.php'); ?>
                                                 <thead class="thin-border-bottom">
                                                     <tr>
                                                         <th class="text-center">#</th>
-														<th class="text-center">Country Name</th>
-                                                        <!-- <th class="text-center">State</th> -->
+														<th class="text-center">Customer Name</th>
+                                                        <th class="text-center">Action</th>
                                                     </tr>
                                                 </thead>
 
@@ -62,11 +53,11 @@ foreach($data as $row)
 {
 echo "<tr>";
 echo "<td  class='text-center'>".$i++."</td>";
-// echo "<td>".$row["countryName"]."</td>";
+echo "<td>".$row["customerName"]."</td>";
 echo "<td class='text-center'>				 
 
-<a title='Country Name' href='".site_url('CountryStateCtrl/stateListByID/'.$row["_id"])."' class='tooltip-default' data-rel='tooltip' data-placement='top'>
-".$row["countryName"]."
+<a title='Add Order' href='".site_url('CustCtrl/getOrderDetails/'.$row["_id"])."' class='tooltip-default' data-rel='tooltip' data-placement='top'>
+<i class='fa fa-user'></i>
 </a> 
 </td>";
 
