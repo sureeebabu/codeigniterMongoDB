@@ -120,3 +120,9 @@ db.customerMaster.insertMany([{
 	}]
 }]);
 -------------------------------
+Remove field from array
+db.customerMaster.update(
+   { type: "juice" },
+   { $unset: { type: "" } }
+)
+------------------------------

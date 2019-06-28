@@ -19,9 +19,12 @@ include('header.php'); ?>
                                     <div class="widget-header">
                                         <h5 class="widget-title bigger lighter">
                                             <i class="ace-icon fa fa-newspaper-o"></i>
-                                            List of Country
+                                            List of Customers
                                         </h5>
 
+                                <a class="btn btn-white btn-info btn-bold pull-right"
+                                            href="<?php echo base_url('CustCtrl/addEditCustomer'); ?>"><i
+                                                class="ace-icon fa fa-plus bigger-120 blue"></i> Add New Customer</a>
 
                                         <a class="btn btn-white btn-info btn-bold pull-right"
                                             href="<?php echo base_url('CustCtrl/addOrderDetails'); ?>"><i
@@ -37,6 +40,7 @@ include('header.php'); ?>
                                                     <tr>
                                                         <th class="text-center">#</th>
 														<th class="text-center">Customer Name</th>
+                                                        <th class="text-center">Customer Mobile No</th>
                                                         <th class="text-center">Action</th>
                                                     </tr>
                                                 </thead>
@@ -54,6 +58,7 @@ foreach($data as $row)
 echo "<tr>";
 echo "<td  class='text-center'>".$i++."</td>";
 echo "<td>".$row["customerName"]."</td>";
+echo "<td>".$row["customerMobileNo"]."</td>";
 echo "<td class='text-center'>				 
 
 <a title='Add Order' href='".site_url('CustCtrl/getOrderDetails/'.$row["_id"])."' class='tooltip-default' data-rel='tooltip' data-placement='top'>

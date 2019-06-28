@@ -21,63 +21,63 @@ include('header.php');
 <?php
 	$dataMode = "";
 	if($mode == "Add New "){
-		$dataMode = "insOrderDetails";
+		$dataMode = "insCustDetails";
 	}elseif($mode =="Edit"){
-		$dataMode = "insOrderDetails/".$customerID;
+		$dataMode = "updateCustDetails/".$customerID;
 	}
 	//echo $dataMode;
 ?>
 
-		<form id="addEditOrderForm" action=" <?php echo site_url('CustCtrl/'.$dataMode); ?> " method="post">
+		<form id="addEditCustForm" action=" <?php echo site_url('CustCtrl/'.$dataMode); ?> " method="post">
 		<div class="widget-body">
 			<div class="widget-main">
 				<div class="row">
 				 
-					<!-- <div class="form-group">
-						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Order ID<span class="required">*</span></label>
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Customer Name<span class="required">*</span></label>
 
 						<div class="col-sm-9">
-							<input type="text"  class="form-control" id="txtOrderID" name="txtOrderID" placeholder="Enter Order ID" 
+							<input type="text"  class="form-control" id="txtCustomerName" name="txtCustomerName" placeholder="Enter Customer Name" 
 								value="<?php 
 										if($mode == "Edit") {
-											if (empty($orderDetailsData["orderID"])) {
+											if (empty($orderDetailsData["customerName"])) {
 												echo "";
 											}
 											else {
-												echo $orderDetailsData["orderID"];
+												echo $orderDetailsData["customerName"];
 											}											
 										}
 										?>"
 							 />
-						</div>&nbsp; -->
+						</div>&nbsp;
 
 					<div class="form-group">
-						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Order No<span class="required">*</span></label>
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Customer Address<span class="required">*</span></label>
 						<div class="col-sm-9">
-						<input type="text"  class="form-control" id="txtOrderNo" name="txtOrderNo" placeholder="Enter Order No" 
+						<input type="text"  class="form-control" id="txtCustomerAddress" name="txtCustomerAddress" placeholder="Enter Customer Address" 
 						value="<?php 
 									if($mode == "Edit") { 
-										if (empty($orderDetailsData["orderNo"])) {
+										if (empty($orderDetailsData["customerAddress"])) {
 												echo "";
 											}
 											else {
-												echo $orderDetailsData["orderNo"];
+												echo $orderDetailsData["customerAddress"];
 										}
 									}
 									?>"
 						 />
 					</div>&nbsp;
 					<div class="form-group">
-						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Order Price<span class="required">*</span></label>
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Customer MobileNo<span class="required">*</span></label>
 						<div class="col-sm-9">
-						<input type="text"  class="form-control" id="txtOrderPrice" name="txtOrderPrice" placeholder="Enter Order Price" 
+						<input type="text"  class="form-control" id="txtCustomerMobileNo" name="txtCustomerMobileNo" placeholder="Enter Customer MobileNo" 
 						value="<?php 
 									if($mode == "Edit") {
-										if (empty($orderDetailsData["orderPrice"])) {
+										if (empty($orderDetailsData["customerMobileNo"])) {
 												echo "";
 											}
 											else {
-												echo $orderDetailsData["orderPrice"];
+												echo $orderDetailsData["customerMobileNo"];
 										}
 									}?>"
 						 />
