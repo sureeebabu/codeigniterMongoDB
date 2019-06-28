@@ -21,14 +21,14 @@ include('header.php');
 <?php
 	$dataMode = "";
 	if($mode == "Add New "){
-		$dataMode = "insOrderDetails";
-	}elseif($mode =="Edit"){
 		$dataMode = "insOrderDetails/".$customerID;
+	}elseif($mode =="Edit"){
+		$dataMode = "upOrderDetails/".$customerID;
 	}
 	//echo $dataMode;
 ?>
 
-		<form id="addEditOrderForm" action=" <?php echo site_url('CustCtrl/'.$dataMode); ?> " method="post">
+		<form id="addEditOrderForm" action=" <?php echo site_url('OrderCtrl/'.$dataMode); ?> " method="post">
 		<div class="widget-body">
 			<div class="widget-main">
 				<div class="row">

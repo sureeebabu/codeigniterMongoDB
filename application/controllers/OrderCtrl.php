@@ -1,50 +1,39 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class CustCtrl extends CI_Controller { 
+class OrderCtrl extends CI_Controller { 
 
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->helper('url'); 
-		$this->load->model('CustModel');
+		$this->load->model('OrderModel');
+		//$this->load->model('CustModel');
 		$this->load->library('mongo_db');
 	}
 
 	public function index() {
-		$result['data'] = $this->CustModel->getData();
-		//var_dump($result['data']);
-		$this->load->view('CustView',$result);         
+
 	}
 
-	public function addEditCustomer(){
-		$result['mode'] = "Add New ";
-		$this->load->view('addEditCustomer',$result);
-	}
 
 	public function listOrder($customerID) {
-		$result['orderDetailsData'] = $this->CustModel->listOrderDetailsByID($customerID);
+		$result['orderDetailsData'] = $this->OrderModel->listOrderDetailsByID($customerID);
+		//print_r($result['orderDetailsData'][3]["orderID"]);
 		$this->load->view('listOrder',$result);         
 	}
 
-	public function insCustDetails(){
-		$insCustData= array(
-						'customerName' => $this->input->post('txtCustomerName'),
-						'customerAddress' => $this->input->post('txtCustomerAddress'),
-						'customerMobileNo' => $this->input->post('txtCustomerMobileNo'),
-					);
-		$this->mongo_db->insert('customerMaster',$insCustData);
-		redirect("CustCtrl");
-	}
-
-	public function getOrderDetails($customerID){
+	public function editOrder($orderID,$customerID){
 		$result['mode'] = "Edit";
-		$result['customerID'] = $customerID;		
-		$result['orderDetailsData'] = $this->CustModel->getOrderDetailsByID($customerID);
+		$result['orderID'] = $orderID;	
+		$result['customerID'] = $customerID;
+		//print_r($orderID);
+		$result['orderDetailsData'] = $this->OrderModel->getOrderDetailsByID($orderID,$customerID);
 		$this->load->view('addEditOrder',$result);
 	}
 
-	public function addOrderDetails(){
+	public function addOrderDetails($customerID){
+		$result['customerID'] = $customerID;
 		$result['mode'] = "Add New ";
 		$this->load->view('addEditOrder',$result);
 	}
@@ -72,7 +61,7 @@ class CustCtrl extends CI_Controller {
 		// 		]
 				
 		// 		)->update('customerMaster');
-		redirect("CustCtrl");
+		redirect("OrderCtrl/listOrder/".$customerID);
 	}
 
 	public function upOrderDetails($customerID,$orderID){
@@ -84,7 +73,7 @@ class CustCtrl extends CI_Controller {
 				]
 				
 				)->update('customerMaster');
-		redirect("CustCtrl");
+		redirect("OrderCtrl/listOrder/".$customerID);
 	}
 	 
 }

@@ -19,15 +19,11 @@ include('header.php'); ?>
                                     <div class="widget-header">
                                         <h5 class="widget-title bigger lighter">
                                             <i class="ace-icon fa fa-newspaper-o"></i>
-                                            List of Customers
+                                            List of Order
                                         </h5>
-
-                                <a class="btn btn-white btn-info btn-bold pull-right"
-                                            href="<?php echo base_url('CustCtrl/addEditCustomer'); ?>"><i
-                                                class="ace-icon fa fa-plus bigger-120 blue"></i> Add New Customer</a>
-
-                                        
-
+                                    <a class="btn btn-white btn-info btn-bold pull-right"
+                                            href="<?php echo base_url('OrderCtrl/addOrderDetails/'.$this->uri->segment(3)); ?>"><i
+                                                class="ace-icon fa fa-plus bigger-120 blue"></i> Add New Order Details</a>
                                     </div>
 
                                     <div class="widget-body">
@@ -37,8 +33,8 @@ include('header.php'); ?>
                                                 <thead class="thin-border-bottom">
                                                     <tr>
                                                         <th class="text-center">#</th>
-														<th class="text-center">Customer Name</th>
-                                                        <th class="text-center">Customer Mobile No</th>
+														<th class="text-center">Order No</th>
+                                                        <th class="text-center">Order Price</th>
                                                         <th class="text-center">Action</th>
                                                     </tr>
                                                 </thead>
@@ -48,23 +44,25 @@ include('header.php'); ?>
 
 //echo base_url();
 
-if(count($data)>0)
+if(count($orderDetailsData)>0)
 {
 $i=1;
-foreach($data as $row)
+$j=0;
+foreach($orderDetailsData as $row)
 {
 echo "<tr>";
 echo "<td  class='text-center'>".$i++."</td>";
-echo "<td>".$row["customerName"]."</td>";
-echo "<td>".$row["customerMobileNo"]."</td>";
-echo "<td class='text-center'>				 
-
-<a title='List Order' href='".site_url('OrderCtrl/listOrder/'.$row["_id"])."' class='tooltip-default' data-rel='tooltip' data-placement='top'>
-<i class='fa fa-user'></i>
-</a> 
-</td>";
-
-// echo "<td>".$row["stateList"][0]."</td>";
+echo "<td>".$row["orderNo"]."</td>";
+echo "<td>".$row["orderPrice"]."</td>";
+echo "<td class='text-center'>";
+foreach ($orderDetailsData[$j]["orderID"] as $key => $orderID) {
+        //echo  $orderID . '<br>';        
+    echo "<a title='Edit Order' href='".site_url('OrderCtrl/editOrder/'.$orderID.'/'.$this->uri->segment(3))."' class='tooltip-default' data-rel='tooltip' data-placement='top'>
+        <i class='fa fa-pencil'></i>
+        </a> ";
+    }
+    $j++;
+echo "</td>";
 echo "</tr>"; 
 }
 }else
@@ -72,13 +70,13 @@ echo "</tr>";
 echo "<tr><td class='text-center text-danger' colspan='4'><b>No Record Found</b></td></tr>";
 }
 ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- /.span -->
-                        </div><!-- /.row -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.span -->
+</div><!-- /.row -->
 
 
 

@@ -1,23 +1,22 @@
 <?php
-class CustModel extends CI_Model 
+class OrderModel extends CI_Model 
 {
 
-	function getData() {
-		$query = $this->mongo_db->sort('_id', 'desc')->get('customerMaster');  //Order By
-		return $query;
-	}
-
 	function listOrderDetailsByID($customerID) { 
-		// $query = $this->mongo_db->getWhere('customerMaster', ['_id' => new MongoDB\BSON\ObjectID( $customerID )]);  // Where Condition
-		// return $query;
 		 $query =  $this->mongo_db->getWhere('customerMaster', ['_id' => new MongoDB\BSON\ObjectID( $customerID )])[0];
-		 //print_r($query["orderDetails"][0]);
+		 //print_r($query["orderDetails"][2]["orderID"]);
 		 return $query["orderDetails"];
 	}
-	
-	function getOrderDetailsByID($customerID) {
+
+	function getOrderDetailsByID($orderID,$customerID) {
 		
-		$id = ['_id' => new MongoDB\BSON\ObjectID( $customerID )];		
+		$id = [
+				'_id' => new MongoDB\BSON\ObjectID( $customerID ),
+				'orderDetails.$.orderID' =>  new MongoDB\BSON\ObjectID( $orderID)
+			 ];		
+
+			 //print_r($id);
+
 		//$query = $this->mongo_db->where($id)->get('customerMaster')[0]["orderDetails"][0];  // Return Nested Json Object (orderDetails)
 
 		if (empty($this->mongo_db->where($id)->get('customerMaster')[0]["orderDetails"][0])) {  // Check Whether orderDetails Data is available or not
@@ -43,4 +42,5 @@ class CustModel extends CI_Model
 		//         ]
 		// }
 	}
+
 }

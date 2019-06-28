@@ -46,6 +46,7 @@ class IndexCtrl extends CI_Controller {
 		$data['mode'] = "Edit";		
 		$data['newsID'] = $newsID;
 		$data['newsData'] = $this->NewsModel->getDataByID($newsID);
+		//print_r($data['newsData']);
 		$this->load->view('addEditNews',$data);
 	}
 
