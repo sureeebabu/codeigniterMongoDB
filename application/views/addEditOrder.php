@@ -38,7 +38,16 @@ include('header.php');
 
 						<div class="col-sm-9">
 							<input type="text"  class="form-control" id="txtOrderID" name="txtOrderID" placeholder="Enter Order ID" 
-								value="<?php if($mode == "Edit") { echo $orderDetailsData["orderID"] ? $orderDetailsData["orderID"] : "" ;}?>"
+								value="<?php 
+										if($mode == "Edit") {
+											if (empty($orderDetailsData["orderID"])) {
+												echo "";
+											}
+											else {
+												echo $orderDetailsData["orderID"];
+											}											
+										}
+										?>"
 							 />
 						</div>&nbsp;
 
@@ -46,14 +55,31 @@ include('header.php');
 						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Order No<span class="required">*</span></label>
 						<div class="col-sm-9">
 						<input type="text"  class="form-control" id="txtOrderNo" name="txtOrderNo" placeholder="Enter Order No" 
-						value="<?php if($mode == "Edit") { echo $orderDetailsData["orderNo"] ? $orderDetailsData["orderNo"] : "" ;}?>"
+						value="<?php 
+									if($mode == "Edit") { 
+										if (empty($orderDetailsData["orderNo"])) {
+												echo "";
+											}
+											else {
+												echo $orderDetailsData["orderNo"];
+										}
+									}
+									?>"
 						 />
 					</div>&nbsp;
 					<div class="form-group">
 						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Order Price<span class="required">*</span></label>
 						<div class="col-sm-9">
 						<input type="text"  class="form-control" id="txtOrderPrice" name="txtOrderPrice" placeholder="Enter Order Price" 
-						value="<?php if($mode == "Edit") { echo $orderDetailsData["orderPrice"] ? $orderDetailsData["orderPrice"] : "" ;}?>"
+						value="<?php 
+									if($mode == "Edit") {
+										if (empty($orderDetailsData["orderPrice"])) {
+												echo "";
+											}
+											else {
+												echo $orderDetailsData["orderPrice"];
+										}
+									}?>"
 						 />
 					</div>&nbsp;
 					</div>

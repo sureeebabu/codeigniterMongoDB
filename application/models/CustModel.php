@@ -10,8 +10,16 @@ class CustModel extends CI_Model
 	function getOrderDetailsByID($customerID) {
 		
 		$id = ['_id' => new MongoDB\BSON\ObjectID( $customerID )];		
-		$query = $this->mongo_db->where($id)->get('customerMaster')[0]["orderDetails"][0];  // Return Nested Json Object (orderDetails)
-		return $query;
+		//$query = $this->mongo_db->where($id)->get('customerMaster')[0]["orderDetails"][0];  // Return Nested Json Object (orderDetails)
+
+		if (empty($this->mongo_db->where($id)->get('customerMaster')[0]["orderDetails"][0])) {  // Check Whether orderDetails Data is available or not
+				return "";
+			}
+			else {
+				$query = $this->mongo_db->where($id)->get('customerMaster')[0]["orderDetails"][0];  // Return Nested Json Object (orderDetails)
+				return $query;
+		}
+		//return $query;
 		// 		{
 		//         "_id" : ObjectId("5d1464ef4df7ac90b8b3262d"),
 		//         "customerName" : "daijworld",
