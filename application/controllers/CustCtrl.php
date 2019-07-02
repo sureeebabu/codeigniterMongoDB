@@ -32,6 +32,7 @@ class CustCtrl extends CI_Controller {
 						'customerName' => $this->input->post('txtCustomerName'),
 						'customerAddress' => $this->input->post('txtCustomerAddress'),
 						'customerMobileNo' => $this->input->post('txtCustomerMobileNo'),
+						'orderDetails' => []
 					);
 		$this->mongo_db->insert('customerMaster',$insCustData);
 		redirect("CustCtrl");
@@ -47,44 +48,6 @@ class CustCtrl extends CI_Controller {
 	public function addOrderDetails(){
 		$result['mode'] = "Add New ";
 		$this->load->view('addEditOrder',$result);
-	}
- 
-
-	public function insOrderDetails($customerID){
-		$id = new MongoDB\BSON\ObjectID($customerID);
-		$nestedData= array(
-						'orderID' => new MongoDB\BSON\ObjectID(),
-						'orderNo' => $this->input->post('txtOrderNo'),
-						'orderPrice' => $this->input->post('txtOrderPrice'),
-					);
-
-		$this->mongo_db->push('orderDetails', $nestedData, ['sort' => 'DESC'])->where('_id', $id )->update('customerMaster');
-
-
-		//////////////////
-			// Update Nested Object
-		//  $id = ['orderDetails._id' => new MongoDB\BSON\ObjectID( "5d15c65f465a11140c000634" )];
-		// $this->mongo_db->where($id)->set(
-		// 		[
-		// 			'orderDetails.$.orderID' => $this->input->post('txtOrderID'),
-		// 			'orderDetails.$.orderNo' => $this->input->post('txtOrderNo'),
-		// 			'orderDetails.$.orderPrice' => $this->input->post('txtOrderPrice'),
-		// 		]
-				
-		// 		)->update('customerMaster');
-		redirect("CustCtrl");
-	}
-
-	public function upOrderDetails($customerID,$orderID){
- 		$id = ['orderDetails.orderID' => new MongoDB\BSON\ObjectID($orderID)];
-		$this->mongo_db->where($id)->set(
-				[
-					'orderDetails.$.orderNo' => $this->input->post('txtOrderNo'),
-					'orderDetails.$.orderPrice' => $this->input->post('txtOrderPrice'),
-				]
-				
-				)->update('customerMaster');
-		redirect("CustCtrl");
-	}
+	} 
 	 
 }

@@ -23,12 +23,12 @@ class OrderCtrl extends CI_Controller {
 		$this->load->view('listOrder',$result);         
 	}
 
-	public function editOrder($orderID,$customerID){
+	public function editOrder($orderID,$customerID,$arrIndex){
 		$result['mode'] = "Edit";
 		$result['orderID'] = $orderID;	
 		$result['customerID'] = $customerID;
 		//print_r($orderID);
-		$result['orderDetailsData'] = $this->OrderModel->getOrderDetailsByID($orderID,$customerID);
+		$result['orderDetailsData'] = $this->OrderModel->getOrderDetailsByID($orderID,$arrIndex);
 		$this->load->view('addEditOrder',$result);
 	}
 
@@ -45,22 +45,9 @@ class OrderCtrl extends CI_Controller {
 						'orderID' => new MongoDB\BSON\ObjectID(),
 						'orderNo' => $this->input->post('txtOrderNo'),
 						'orderPrice' => $this->input->post('txtOrderPrice'),
-					);
+		);
 
-		$this->mongo_db->push('orderDetails', $nestedData, ['sort' => 'DESC'])->where('_id', $id )->update('customerMaster');
-
-
-		//////////////////
-			// Update Nested Object
-		//  $id = ['orderDetails._id' => new MongoDB\BSON\ObjectID( "5d15c65f465a11140c000634" )];
-		// $this->mongo_db->where($id)->set(
-		// 		[
-		// 			'orderDetails.$.orderID' => $this->input->post('txtOrderID'),
-		// 			'orderDetails.$.orderNo' => $this->input->post('txtOrderNo'),
-		// 			'orderDetails.$.orderPrice' => $this->input->post('txtOrderPrice'),
-		// 		]
-				
-		// 		)->update('customerMaster');
+		$this->mongo_db->push('orderDetails', $nestedData, ['sort' => 'DESC'])->where('_id', $id )->update('customerMaster'); 
 		redirect("OrderCtrl/listOrder/".$customerID);
 	}
 
@@ -77,15 +64,11 @@ class OrderCtrl extends CI_Controller {
 	}
 
 	public function deleteOrderDetails($orderID,$customerID){
-
 		$id = new MongoDB\BSON\ObjectID($customerID);
 		$nestedData= array(
 						'orderID' => new MongoDB\BSON\ObjectID($orderID)
-					);
-
+		);
 		$this->mongo_db->pull('orderDetails', $nestedData, ['sort' => 'DESC'])->where('_id', $id )->update('customerMaster');
-
-		 
 		redirect("OrderCtrl/listOrder/".$customerID);
 	}
 	 

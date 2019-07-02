@@ -23,18 +23,18 @@ important Step : db.createUser(
 	newsCategory:'UK'
 	});
 
-	 db.newsMaster.insertMany([
-		{
-		 newsTitle :'Some Title',
-		 newsDesc:'Some desc', 
-		 newsCategory:'UK'
-		},
-		{
-		 newsTitle :'Some Title 2',
-		 newsDesc:'Some desc 2', 
-		 newsCategory:'UK'
-		}
-		  ]);
+ db.newsMaster.insertMany([
+	{
+	 newsTitle :'Some Title',
+	 newsDesc:'Some desc', 
+	 newsCategory:'UK'
+	},
+	{
+	 newsTitle :'Some Title 2',
+	 newsDesc:'Some desc 2', 
+	 newsCategory:'UK'
+	}
+	  ]);
 
 9.show collections;
 10.db.newsMaster.find();

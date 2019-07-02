@@ -23,7 +23,7 @@ include('header.php');
 	if($mode == "Add New "){
 		$dataMode = "insOrderDetails/".$customerID;
 	}elseif($mode =="Edit"){
-		$dataMode = "upOrderDetails/".$customerID;
+		$dataMode = "upOrderDetails/".$customerID."/".$orderID;
 	}
 	//echo $dataMode;
 ?>
@@ -31,26 +31,7 @@ include('header.php');
 		<form id="addEditOrderForm" action=" <?php echo site_url('OrderCtrl/'.$dataMode); ?> " method="post">
 		<div class="widget-body">
 			<div class="widget-main">
-				<div class="row">
-				 
-					<!-- <div class="form-group">
-						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Order ID<span class="required">*</span></label>
-
-						<div class="col-sm-9">
-							<input type="text"  class="form-control" id="txtOrderID" name="txtOrderID" placeholder="Enter Order ID" 
-								value="<?php 
-										if($mode == "Edit") {
-											if (empty($orderDetailsData["orderID"])) {
-												echo "";
-											}
-											else {
-												echo $orderDetailsData["orderID"];
-											}											
-										}
-										?>"
-							 />
-						</div>&nbsp; -->
-
+				<div class="row"> 
 					<div class="form-group">
 						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Order No<span class="required">*</span></label>
 						<div class="col-sm-9">
