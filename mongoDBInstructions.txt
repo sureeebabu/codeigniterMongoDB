@@ -126,3 +126,18 @@ db.customerMaster.update(
    { $unset: { type: "" } }
 )
 ------------------------------
+Delete Nested Object
+db.customerMaster.update({
+        "_id":  ObjectId("5d1af8be465a110d94003613"),
+        "orderDetails.orderID": ObjectId("5d1aff9d465a110d94003618"),
+    }, {
+        "$pull": {
+            orderDetails: {
+                orderID: ObjectId("5d1aff9d465a110d94003618")
+            }
+        }
+    }, 
+    {
+        getAutoValues: false
+    });
+-------------------------------

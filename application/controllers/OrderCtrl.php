@@ -75,5 +75,18 @@ class OrderCtrl extends CI_Controller {
 				)->update('customerMaster');
 		redirect("OrderCtrl/listOrder/".$customerID);
 	}
+
+	public function deleteOrderDetails($orderID,$customerID){
+
+		$id = new MongoDB\BSON\ObjectID($customerID);
+		$nestedData= array(
+						'orderID' => new MongoDB\BSON\ObjectID($orderID)
+					);
+
+		$this->mongo_db->pull('orderDetails', $nestedData, ['sort' => 'DESC'])->where('_id', $id )->update('customerMaster');
+
+		 
+		redirect("OrderCtrl/listOrder/".$customerID);
+	}
 	 
 }

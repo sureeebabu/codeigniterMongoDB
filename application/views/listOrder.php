@@ -59,6 +59,9 @@ foreach ($orderDetailsData[$j]["orderID"] as $key => $orderID) {
         //echo  $orderID . '<br>';        
     echo "<a title='Edit Order' href='".site_url('OrderCtrl/editOrder/'.$orderID.'/'.$this->uri->segment(3))."' class='tooltip-default' data-rel='tooltip' data-placement='top'>
         <i class='fa fa-pencil'></i>
+        </a>&nbsp;&nbsp;";
+    echo "<a title='Delete Order'  onClick='return doconfirm();' href='".site_url('OrderCtrl/deleteOrderDetails/'.$orderID.'/'.$this->uri->segment(3))."' class='tooltip-default' data-rel='tooltip' data-placement='top'>
+        <i class='fa fa-trash'></i>
         </a> ";
     }
     $j++;
